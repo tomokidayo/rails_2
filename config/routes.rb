@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users, only: [:new, :create, :show, :edit, :update]
+  # config/routes.rb
+
+resources :rooms
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'

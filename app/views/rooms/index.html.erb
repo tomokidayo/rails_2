@@ -1,0 +1,13 @@
+<!-- app/views/rooms/index.html.erb -->
+
+<h2>施設一覧</h2>
+
+<%= link_to "施設登録", new_room_path %>
+
+<% @rooms.each do |room| %>
+  <div>
+    <h3><%= room.name %></h3>
+    <p><%= room.description %></p>
+    <p><%= room.price %>円</p>
+  </div>
+<% end %>
