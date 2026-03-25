@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
   # config/routes.rb
 
   # config/routes.rb
-  root "sessions#new"
+  # root "sessions#new"
+  # root "users#show"
+  root "home#index"
 
   resources :users, only: [:new, :create, :show, :edit, :update]
 
