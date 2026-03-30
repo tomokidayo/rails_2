@@ -12,6 +12,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
+      # バリデーションエラーの内容をログに出力
+      logger.debug @user.errors.full_messages
       render :new
     end
   end
