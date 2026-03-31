@@ -1,0 +1,11 @@
+<!-- app/views/reservations/index.html.erb -->
+
+<h2>予約一覧</h2>
+
+<% @reservations.each do |r| %>
+  <div>
+    <p><%= r.room.name %></p>
+    <p><%= r.check_in_date %> ~ <%= r.check_out_date %></p>
+    <p><%= r.people_count %>人</p>
+  </div>
+<% end %>

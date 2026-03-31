@@ -9,5 +9,6 @@
     <h3><%= room.name %></h3>
     <p><%= room.description %></p>
     <p><%= room.price %>円</p>
+    <%= link_to "詳細を見る", room_path(room) %>
   </div>
 <% end %>

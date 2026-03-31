@@ -1,0 +1,26 @@
+<!-- app/views/reservations/new.html.erb -->
+
+<h2>予約する</h2>
+
+<%= form_with model: @reservation, local: true do |f| %>
+
+  <%= hidden_field_tag "reservation[room_id]", @room.id %>
+
+  <div>
+    <%= f.label :check_in_date, "チェックイン" %>
+    <%= f.date_field :check_in_date %>
+  </div>
+
+  <div>
+    <%= f.label :check_out_date, "チェックアウト" %>
+    <%= f.date_field :check_out_date %>
+  </div>
+
+  <div>
+    <%= f.label :people_count, "人数" %>
+    <%= f.number_field :people_count %>
+  </div>
+
+  <%= f.submit "予約する" %>
+
+<% end %>

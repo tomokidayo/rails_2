@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update]
   # config/routes.rb
 
-resources :rooms
+  resources :rooms
+  resources :reservations, only: [:index, :new, :create]
 
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'

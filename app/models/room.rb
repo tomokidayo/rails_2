@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
   belongs_to :user
-  
+  has_many :reservations
+
   def index
     @rooms = current_user.rooms
   end
