@@ -19,13 +19,21 @@ Rails.application.routes.draw do
   # root "users#show"
   root "home#index"
 
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users, only: [ :new, :create, :show, :edit, :update ]
   # config/routes.rb
 
   resources :rooms
-  resources :reservations, only: [:index, :new, :create]
+  resources :reservations, only: [ :index, :new, :create ]
 
-  get    '/login',  to: 'sessions#new'
-  post   '/login',  to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  # config/routes.rb
+
+  resources :reservations do
+    collection do
+      post :confirm
+    end
+  end
+
+  get    "/login",  to: "sessions#new"
+  post   "/login",  to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 end

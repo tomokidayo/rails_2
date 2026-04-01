@@ -1,0 +1,25 @@
+<!-- app/views/reservations/confirm.html.erb -->
+<h2>予約確認</h2>
+<p>施設名: <%= @room.name %></p>
+<p>
+  チェックイン:
+  <%= @reservation.check_in_date.strftime("%Y/%m/%d") %>
+</p>
+<p>
+  チェックアウト:
+  <%= @reservation.check_out_date.strftime("%Y/%m/%d") %>
+</p>
+<p>人数: <%= @reservation.people_count %>人</p>
+<p>
+  宿泊日数:
+  <%= (@reservation.check_out_date - @reservation.check_in_date).to_i %>日
+</p>
+<p>
+  合計金額:
+  <%= (@reservation.check_out_date - @reservation.check_in_date).to_i * @room.price * @reservation.people_count %>円
+</p>
+<%= form_with model: @reservation, local: true do |f| %>
+  <%= hidden_field_tag "reservation[room_id]", @room.id %>
+  <%= hidden_field_tag "reservation[people_count]", @reservation.people_count %>
+  <%= f.submit "予約確定" %>
+<% end %>
