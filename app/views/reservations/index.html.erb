@@ -1,11 +1,37 @@
 <!-- app/views/reservations/index.html.erb -->
-
 <h2>予約一覧</h2>
-
 <% @reservations.each do |r| %>
-  <div>
-    <p><%= r.room.name %></p>
-    <p><%= r.check_in_date %> ~ <%= r.check_out_date %></p>
-    <p><%= r.people_count %>人</p>
+  <div style="border:1px solid #ccc; margin-bottom:20px; padding:10px;">
+    <!-- 画像 -->
+    <% if r.room.image.present? %>
+      <%= image_tag r.room.image, size: "200x150" %>
+    <% else %>
+      <%= image_tag "default.png", size: "200x150" %>
+    <% end %>
+    <!-- 施設名 -->
+    <h3><%= r.room.name %></h3>
+    <!-- 紹介文 -->
+    <p><%= r.room.description %></p>
+    <!-- 日付 -->
+    <p>
+      チェックイン:
+      <%= r.check_in_date.strftime("%Y/%m/%d") %>
+    </p>
+    <p>
+      チェックアウト:
+      <%= r.check_out_date.strftime("%Y/%m/%d") %>
+    </p>
+    <!-- 日数 -->
+    <% days = (r.check_out_date - r.check_in_date).to_i %>
+    <!-- 合計金額 -->
+    <p>
+      合計料金:
+      <%= days * r.room.price * r.people_count %>円
+    </p>
+    <!-- 予約日時 -->
+    <p>
+      予約確定日時:
+      <%= r.created_at.strftime("%Y/%m/%d %H:%M") %>
+    </p>
   </div>
 <% end %>

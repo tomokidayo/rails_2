@@ -1,20 +1,14 @@
 <!-- app/views/rooms/show.html.erb -->
-
 <h2>施設詳細</h2>
-
-<% if @room.image.present? %>
+<% if @room.image.attached? %>
   <%= image_tag @room.image, size: "300x200" %>
 <% else %>
   <%= image_tag "default.png", size: "300x200" %>
 <% end %>
-
 <p>施設名: <%= @room.name %></p>
 <p>紹介文: <%= @room.description %></p>
 <p>料金: <%= @room.price %>円 / 日</p>
 <p>住所: <%= @room.address %></p>
-
 <%= link_to "予約する", new_reservation_path(room_id: @room.id) %>
-
 <br>
-
 <%= link_to "戻る", rooms_path %>
