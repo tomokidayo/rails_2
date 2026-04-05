@@ -20,16 +20,19 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users, only: [ :new, :create, :show, :edit, :update ]
-  # config/routes.rb
 
-  resources :rooms
+  # resources :rooms
   resources :reservations, only: [ :index, :new, :create ]
-
-  # config/routes.rb
 
   resources :reservations do
     collection do
       post :confirm
+    end
+  end
+
+  resources :rooms do
+    collection do
+      get :area_search
     end
   end
 

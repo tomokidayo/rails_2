@@ -11,4 +11,12 @@ class Room < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :address, presence: true
+
+  # 検索機能
+  # LIKE検索 + scope化
+  # キーワードが存在する場合のみ、addressカラムに対してLIKE検索を行うスコープ
+  scope :area_search, ->(keyword) {
+    # binding.break
+    where("address LIKE ?", "%#{keyword}%") if keyword.present?
+  }
 end
