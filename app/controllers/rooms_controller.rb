@@ -24,8 +24,21 @@ end
   end
 
     # エリア検索のアクション
-    def area_search
-      @rooms = Room.area_search(params[:keyword])
+    # def area_search
+    #   @rooms = Room.area_search(params[:keyword])
+    #   render :index
+    # end
+    def search
+      @rooms = Room.all
+
+      if params[:area].present?
+        @rooms = @rooms.area_search(params[:area])
+      end
+
+      if params[:keyword].present?
+        @rooms = @rooms.keyword_search(params[:keyword])
+      end
+
       render :index
     end
   private

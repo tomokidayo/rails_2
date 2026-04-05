@@ -15,8 +15,12 @@ class Room < ApplicationRecord
   # 検索機能
   # LIKE検索 + scope化
   # キーワードが存在する場合のみ、addressカラムに対してLIKE検索を行うスコープ
-  scope :area_search, ->(keyword) {
+  scope :area_search, ->(area) {
     # binding.break
-    where("address LIKE ?", "%#{keyword}%") if keyword.present?
+    where("address LIKE ?", "%#{area}%") if area.present?
+  }
+
+  scope :keyword_search, ->(keyword) {
+    where("name LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%") if keyword.present?
   }
 end

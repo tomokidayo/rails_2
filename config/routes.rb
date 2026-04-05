@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :rooms do
     collection do
-      get :area_search
+      get :search
     end
   end
 

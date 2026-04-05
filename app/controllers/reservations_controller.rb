@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = current_user.reservations.build(reservation_params)
     @reservation.room_id = params[:reservation][:room_id]
-
+    # binding.break
     if @reservation.save
       redirect_to reservations_path
     else

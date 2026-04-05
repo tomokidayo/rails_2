@@ -1,8 +1,9 @@
 <!-- app/views/rooms/index.html.erb -->
 <h2>施設一覧</h2>
 <%= link_to "施設登録", new_room_path %>
-<%= form_with url: area_search_rooms_path, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword, placeholder: "エリア（例: 東京）" %>
+<%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+  <%= f.text_field :area, placeholder: "エリア（例: 東京）" %>
+  <%= f.text_field :keyword, placeholder: "キーワード検索" %>
   <%= f.submit "検索" %>
 <% end %>
 <% @rooms.each do |room| %>

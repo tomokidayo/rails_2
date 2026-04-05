@@ -20,6 +20,8 @@
 </p>
 <%= form_with model: @reservation, local: true do |f| %>
   <%= hidden_field_tag "reservation[room_id]", @room.id %>
+  <%= hidden_field_tag "reservation[check_in_date]", @reservation.check_in_date %>
+  <%= hidden_field_tag "reservation[check_out_date]", @reservation.check_out_date %>
   <%= hidden_field_tag "reservation[people_count]", @reservation.people_count %>
   <%= f.submit "予約確定" %>
 <% end %>
