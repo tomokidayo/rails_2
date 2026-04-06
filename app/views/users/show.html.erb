@@ -1,0 +1,11 @@
+<h2>アカウント情報</h2>
+<p>名前: <%= @user.name %></p>
+<p>メール: <%= @user.email %></p>
+<p>自己紹介:</p>
+<p><%= @user.introduction %></p>
+<% if @user.icon.attached? %>
+  <%= image_tag @user.icon %>
+<% end %>
+<hr>
+<%= link_to "プロフィール編集", edit_profile_user_path %>
+<%= link_to "アカウント編集", edit_account_user_path %>

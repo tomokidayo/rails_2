@@ -3,11 +3,11 @@ class User < ApplicationRecord
   # app/models/user.rb
   has_many :rooms
   has_many :reservations
+  has_one_attached :icon
 
   # バリデーションの追加
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
-
 end

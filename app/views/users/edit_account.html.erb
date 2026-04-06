@@ -1,0 +1,10 @@
+<h2>アカウント編集</h2>
+<%= form_with model: @user, url: update_account_user_path, method: :patch do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "更新" %>
+<% end %>

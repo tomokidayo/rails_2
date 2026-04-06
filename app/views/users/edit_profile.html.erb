@@ -1,0 +1,10 @@
+<h2>プロフィール編集</h2>
+<%= form_with model: @user, url: update_profile_user_path, method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :icon %>
+  <%= f.file_field :icon %>
+  <%= f.label :context %>
+  <%= f.text_area :context %>
+  <%= f.submit "更新" %>
+<% end %>
