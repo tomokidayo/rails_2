@@ -3,6 +3,11 @@ class RoomsController < ApplicationController
     @rooms = Room.all # Roomモデルから全てのデータを取得
   end
 
+  def my_rooms
+    @rooms = current_user.rooms # ログインユーザーが所有する部屋を取得
+    render :index # indexビューを再利用して表示
+  end
+
 
   def new
     @room = Room.new

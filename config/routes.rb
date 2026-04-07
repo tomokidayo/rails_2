@@ -43,6 +43,9 @@ resource :user do
   patch :update_profile
 end
 
+
+get "my_rooms", to: "rooms#my_rooms"
+
   # resource :user, only: [ :edit, :update ]
   # resources :rooms
   resources :reservations, only: [ :index, :new, :create ]
