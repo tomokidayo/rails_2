@@ -11,12 +11,19 @@
   <div class="rooms-list">
     <% @rooms.each do |room| %>
       <div class="room-card">
-        <h3 class="room-title"><%= room.name %></h3>
+        <% if room.image.attached? %>
+          <%= image_tag room.image, class: "room-image" %>
+        <% else %>
+          <%= image_tag "default.png", class: "room-image" %>
+        <% end %>
+        <!-- ここをリンク化 -->
+        <h3 class="room-title">
+          <%= link_to room.name, room_path(room), class: "room-link" %>
+        </h3>
         <p class="room-description">
           <%= truncate(room.description, length: 80) %>
         </p>
         <p class="room-price"><%= room.price %>円 / 日</p>
-        <%= link_to "詳細を見る", room_path(room), class: "detail-btn" %>
       </div>
     <% end %>
   </div>

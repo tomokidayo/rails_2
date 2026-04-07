@@ -20,17 +20,28 @@ Rails.application.routes.draw do
   # root "users#show"
   root "home#index"
 
-  resources :users, only: [ :new, :create, :show, :edit, :update ]
+resources :users, only: [ :new, :create ]
 
-  resource :user, only: [ :edit, :update ] do
-    get :edit_account
-    patch :update_account
-  end
+# resource :user, only: [ :edit, :update ] do
+#   get :edit_account
+#   patch :update_account
+# end
 
-  resource :user, only: [ :edit, :update ] do
-    get :edit_profile
-    patch :update_profile
-  end
+# resource :user, only: [ :edit, :update ] do
+#   get :edit_profile
+#   patch :update_profile
+# end
+
+# resource :user do
+#   get :show
+# end
+resource :user do
+  get :show
+  get :edit_account
+  patch :update_account
+  get :edit_profile
+  patch :update_profile
+end
 
   # resource :user, only: [ :edit, :update ]
   # resources :rooms

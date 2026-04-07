@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   end
 
   def edit_account
+    @user = current_user
+  end
+
+  def edit_profile
+    @user = current_user
   end
 
   def update_account
@@ -22,6 +27,15 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "アカウント更新成功"
     else
       render :edit_account
+    end
+  end
+
+  def update_profile
+    # @user = current_user
+    if @user.update(profile_params)
+      redirect_to root_path, notice: "プロフィールを更新しました"
+    else
+      render :edit_profile, status: :unprocessable_entity
     end
   end
   def new
@@ -43,7 +57,8 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = current_user
   end
 
   private
@@ -56,15 +71,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :icon, :introduction, :password_confirmation)
   end
 
-
-  # def account_params
-  #   params.require(:user).permit(:email, :password, :password_confirmation)
-  # end
   def account_params
     if params[:user][:password].blank?
       params.require(:user).permit(:email)
     else
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
+  end
+  def profile_params
+    params.require(:user).permit(:name, :icon, :introduction)
   end
 end
