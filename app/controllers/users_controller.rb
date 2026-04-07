@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def edit
   end
-
   def update
     if @user.update(user_params)
       redirect_to root_path, notice: "プロフィール更新成功"
@@ -13,12 +12,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
   def edit_account
-    @user = current_user
-  end
-
-  def edit_profile
     @user = current_user
   end
 
@@ -30,8 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_profile
+    @user = current_user
+  end
+
   def update_profile
-    # @user = current_user
     if @user.update(profile_params)
       redirect_to root_path, notice: "プロフィールを更新しました"
     else
@@ -54,8 +51,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-
   def show
     # @user = User.find(params[:id])
     # @user = current_user
@@ -67,7 +62,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    # params.require(:user).permit(:name, :email, :password, :password_confirmation)
     params.require(:user).permit(:name, :email, :password, :icon, :introduction, :password_confirmation)
   end
 
@@ -78,6 +72,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
   end
+
   def profile_params
     params.require(:user).permit(:name, :icon, :introduction)
   end

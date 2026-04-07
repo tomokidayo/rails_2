@@ -16,7 +16,6 @@
         <% else %>
           <%= image_tag "default.png", class: "room-image" %>
         <% end %>
-        <!-- ここをリンク化 -->
         <h3 class="room-title">
           <%= link_to room.name, room_path(room), class: "room-link" %>
         </h3>

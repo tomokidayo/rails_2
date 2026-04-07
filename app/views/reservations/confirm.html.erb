@@ -17,12 +17,12 @@
     <% days = (@reservation.check_out_date - @reservation.check_in_date).to_i %>
     <% total = days * @room.price * @reservation.people_count %>
     <div class="confirm-info">
-      <p>📅 チェックイン: <%= @reservation.check_in_date.strftime("%Y/%m/%d") %></p>
-      <p>📅 チェックアウト: <%= @reservation.check_out_date.strftime("%Y/%m/%d") %></p>
-      <p>👥 人数: <%= @reservation.people_count %>人</p>
-      <p>🛏 宿泊日数: <%= days %>日</p>
+      <p>チェックイン: <%= @reservation.check_in_date.strftime("%Y/%m/%d") %></p>
+      <p>チェックアウト: <%= @reservation.check_out_date.strftime("%Y/%m/%d") %></p>
+      <p>人数: <%= @reservation.people_count %>人</p>
+      <p>宿泊日数: <%= days %>日</p>
       <p class="total-price">
-        💰 合計金額: <%= total %>円
+        合計金額: <%= total %>円
       </p>
     </div>
     <!-- ボタン -->
