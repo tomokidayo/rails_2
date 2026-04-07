@@ -1,18 +1,12 @@
-<!-- app/views/sessions/new.html.erb -->
-
-<h2>ログイン</h2>
-
-<%= form_with url: login_path, local: true do %>
-
-  <div>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+<h2 class="form-title">ログイン</h2>
+<%= form_with url: login_path, local: true, class: "form-container" do %>
+  <div class="form-group">
+    <%= label_tag :email, "メールアドレス" %>
+    <%= text_field_tag :email, nil, class: "form-input" %>
   </div>
-
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+  <div class="form-group">
+    <%= label_tag :password, "パスワード" %>
+    <%= password_field_tag :password, nil, class: "form-input" %>
   </div>
-
-  <%= submit_tag "ログイン" %>
+  <%= submit_tag "ログイン", class: "submit-btn" %>
 <% end %>
