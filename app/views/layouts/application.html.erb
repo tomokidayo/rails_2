@@ -6,9 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -16,8 +14,45 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  <!-- app/views/layouts/application.html.erb -->
   <body>
+    <header class="header">
+      <div class="header-logo">
+        <%= link_to root_path do %>
+          <%= image_tag "header-logo.png", class: "logo-image" %>
+        <% end %>
+      </div>
+      <div class="header-nav">
+        <% if logged_in? %>
+          <div class="user-menu">
+            <div class="user-trigger" id="userMenuTrigger">
+              <% if logged_in? && current_user.icon.attached? %>
+                <%= image_tag current_user.icon, class: "user-icon" %>
+              <% else %>
+                <%= image_tag "icon-default.png", class: "user-icon" %>
+              <% end %>
+              <span><%= current_user.name %></span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <%= link_to "施設登録ページ", new_room_path %>
+              <%= link_to "予約済み施設一覧", reservations_path %>
+              <%= link_to "登録済み施設一覧", my_rooms_path %>
+              <%= link_to "マイページ", user_path %>
+              <%# <%= link_to "アカウント編集", edit_account_user_path %>
+              <%# <%= link_to "プロフィール編集", edit_profile_user_path %>
+              <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
+            </div>
+          </div>
+        <% else %>
+          <%= link_to "ログイン", login_path %>
+          <%= link_to "新規登録", new_user_path, class: "m_btn sign-up" %>
+        <% end %>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="footer">
+      <p>Copyright © Potepan Share 2026 All rights reserved</p>
+    </footer>
   </body>
 </html>

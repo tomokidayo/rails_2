@@ -1,0 +1,25 @@
+<h2 class="form-title">プロフィール編集</h2>
+<%= form_with model: @user, url: update_profile_user_path, method: :patch, class: "form-container" do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, class: "form-input" %>
+    <% @user.errors[:name].each do |message| %>
+      <p class="error-text"><%= message %></p>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :icon, "アイコン画像" %>
+    <%= f.file_field :icon, class: "form-input" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :introduction, "自己紹介" %>
+    <%= f.text_area :introduction, class: "form-input", rows: 4 %>
+    <% @user.errors[:introduction].each do |message| %>
+      <p class="error-text"><%= message %></p>
+    <% end %>
+  </div>
+  <%= f.submit "更新", class: "submit-btn" %>
+  <p style="text-align:center; margin-top:15px;">
+    <%= link_to "戻る", root_path %>
+  </p>
+<% end %>

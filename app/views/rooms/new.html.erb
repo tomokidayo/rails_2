@@ -1,0 +1,33 @@
+<h2 class="form-title">施設登録</h2>
+<%= form_with model: @room, local: true, class: "form-container" do |f| %>
+  <% if @room.errors.any? %>
+    <div class="error-box">
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li class="error-text"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :image, "施設画像" %>
+    <%= f.file_field :image, class: "form-input" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "施設名" %>
+    <%= f.text_field :name, class: "form-input" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "説明" %>
+    <%= f.text_area :description, class: "form-input", rows: 4 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "料金（円/日）" %>
+    <%= f.number_field :price, class: "form-input" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address, class: "form-input", placeholder: "例：東京都渋谷区..." %>
+  </div>
+  <%= f.submit "登録", class: "submit-btn" %>
+<% end %>

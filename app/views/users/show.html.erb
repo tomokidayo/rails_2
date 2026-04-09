@@ -1,0 +1,24 @@
+<div class="profile-container">
+  <h2 class="profile-title">アカウント情報</h2>
+  <div class="profile-card">
+    <div class="profile-icon">
+      <% if @user.icon.attached? %>
+        <%= image_tag @user.icon, class: "user-icon-large" %>
+      <% else %>
+        <%= image_tag "icon-default.png", class: "user-icon-large" %>
+      <% end %>
+    </div>
+    <div class="profile-info">
+      <p><strong>名前:</strong> <%= @user.name %></p>
+      <p><strong>メール:</strong> <%= @user.email %></p>
+      <div class="profile-intro">
+        <strong>自己紹介:</strong>
+        <p><%= @user.introduction.presence || "未設定" %></p>
+      </div>
+    </div>
+  </div>
+  <div class="profile-actions">
+    <%= link_to "プロフィール編集", edit_profile_user_path, class: "edit-btn" %>
+    <%= link_to "アカウント編集", edit_account_user_path, class: "edit-btn" %>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- app/views/home/index.html.erb -->
+<div class="key-visual">
+  <div class="key-visual-content">
+    <h1>
+      Potepan Shareで<br>
+      まだ体験したことのない<br>
+      旅をしよう
+    </h1>
+    <!-- 検索フォーム -->
+    <div class="search-box">
+      <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
+        <%= f.text_field :area, placeholder: "エリアを入力してください", class: "search-input" %>
+        <%= f.submit "検索", class: "search-button" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="area-section">
+  <h2 class="section-title">おすすめのエリア</h2>
+  <div class="area-cards">
+    <%= link_to search_rooms_path(area: "東京"), class: "area-card" do %>
+      <%= image_tag "image-tokyo.png", class: "area-image" %>
+      <p>東京</p>
+    <% end %>
+    <%= link_to search_rooms_path(area: "大阪"), class: "area-card" do %>
+      <%= image_tag "image-osaka.png", class: "area-image" %>
+      <p>大阪</p>
+    <% end %>
+    <%= link_to search_rooms_path(area: "福岡"), class: "area-card" do %>
+      <%= image_tag "image-fukuoka.png", class: "area-image" %>
+      <p>福岡</p>
+    <% end %>
+    <%= link_to search_rooms_path(area: "札幌"), class: "area-card" do %>
+      <%= image_tag "image-sapporo.png", class: "area-image" %>
+      <p>札幌</p>
+    <% end %>
+  </div>
+</div>

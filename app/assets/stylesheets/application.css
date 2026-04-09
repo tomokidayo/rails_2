@@ -1,15 +1,673 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+a {
+    text-decoration: none;
+}
+
+
+/* ヘッダー全体 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* ← これがspace-between */
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #6610f2;
+    color: white;
+}
+
+/* ロゴ */
+.header-logo h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+}
+
+/* 右側メニュー */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* 要素間の余白 */
+}
+
+/* リンク */
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+/* ユーザーメニュー */
+.user-menu {
+    position: relative;
+}
+
+/* クリック部分 */
+.user-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* アイコン */
+.user-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+/* 矢印 */
+.arrow {
+    font-size: 12px;
+}
+
+/* プルダウン */
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    color: black;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: none;
+    min-width: 180px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* メニュー項目 */
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f5f5f5;
+}
+
+/* ホバーで表示 */
+/* .user-menu:hover .dropdown-menu {
+    display: block;
+} */
+
+.dropdown-menu {
+    display: none;
+}
+
+/* JSで付けるクラス */
+.dropdown-menu.active {
+    display: block;
+}
+
+/* キービジュアル全体 */
+.key-visual {
+    /* height: 500px; */
+    height: calc(100vh - 70px);
+    background-image: url('key-visual.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* z-index: -1; */
+}
+
+/* 中央配置 */
+.key-visual-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+/* テキスト */
+.key-visual h1 {
+    font-size: 36px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+/* 検索ボックス */
+.search-box {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* フォーム横並び */
+.search-box form {
+    display: flex;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* 入力欄 */
+.search-input {
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    width: 250px;
+    font-size: 14px;
+}
+
+/* ボタン */
+.search-button {
+    background-color: #FF7757;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-button:hover {
+    background-color: #FF7757;
+}
+
+/* ボタン */
+.m_btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.sign-up {
+    background-color: #FF7757;
+    color: white;
+}
+
+/* 新規登録UI */
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-input:focus {
+    border-color: orange;
+    outline: none;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: darkorange;
+}
+
+.rooms-container {
+    width: 800px;
+    margin: 40px auto;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.rooms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.new-room-btn {
+    background-color: orange;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.rooms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.room-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.room-title {
+    margin-bottom: 10px;
+}
+
+.room-description {
+    font-size: 14px;
+    color: #555;
+}
+
+.room-price {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.detail-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* 予約 */
+.room-detail-container {
+    width: 800px;
+    margin: 40px auto;
+}
+
+.room-detail-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.room-detail-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.room-image-box {
+    width: 50%;
+}
+
+.room-detail-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.room-detail-info {
+    width: 50%;
+}
+
+.room-name {
+    margin-bottom: 10px;
+}
+
+.room-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.room-address {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.room-description {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.reserve-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.reserve-btn:hover {
+    background-color: darkorange;
+}
+
+.back-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.reservations-container {
+    width: 800px;
+    margin: 40px auto;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reservations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reservation-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-image {
+    width: 30%;
+}
+
+.room-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.reservation-info {
+    width: 70%;
+}
+
+.room-name {
+    margin-bottom: 8px;
+}
+
+.room-description {
+    font-size: 14px;
+    color: #555;
+}
+
+.total-price {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.reserved-at {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.reservation-container {
+    width: 700px;
+    margin: 40px auto;
+}
+
+.reservation-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.room-summary {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.room-image-small {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 予約確認画面 */
+.reservation-confirm-container {
+    width: 600px;
+    margin: 40px auto;
+}
+
+.reservation-confirm-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-info p {
+    margin: 8px 0;
+}
+
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background: #ccc;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.area-section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.area-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.area-card {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.area-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.area-card p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* ホバーでちょい拡大（いい感じになる） */
+.area-card:hover .area-image {
+    transform: scale(1.05);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f8f8f8;
+    color: #555;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.room-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* 全体コンテナ */
+.profile-container {
+    width: 700px;
+    margin: 50px auto;
+}
+
+/* タイトル */
+.profile-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* カード */
+.profile-card {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* アイコン */
+.profile-icon {
+    width: 150px;
+    text-align: center;
+}
+
+.user-icon-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 情報エリア */
+.profile-info {
+    flex: 1;
+}
+
+.profile-info p {
+    margin: 8px 0;
+}
+
+/* 自己紹介 */
+.profile-intro {
+    margin-top: 15px;
+}
+
+.profile-intro p {
+    margin-top: 5px;
+    color: #555;
+}
+
+/* ボタンエリア */
+.profile-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ボタン */
+.edit-btn {
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: darkorange;
+}
+
+/* サブボタン（グレー） */
+.edit-btn.secondary {
+    background-color: #ccc;
+    color: black;
+}
+
+.edit-btn.secondary:hover {
+    background-color: #aaa;
+}

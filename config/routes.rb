@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get "home/index"
+  # get "rooms/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,4 +13,56 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # config/routes.rb
+
+  # config/routes.rb
+  # root "sessions#new"
+  # root "users#show"
+  root "home#index"
+
+resources :users, only: [ :new, :create ]
+
+# resource :user, only: [ :edit, :update ] do
+#   get :edit_account
+#   patch :update_account
+# end
+
+# resource :user, only: [ :edit, :update ] do
+#   get :edit_profile
+#   patch :update_profile
+# end
+
+# resource :user do
+#   get :show
+# end
+resource :user do
+  get :show
+  get :edit_account
+  patch :update_account
+  get :edit_profile
+  patch :update_profile
+end
+
+
+get "my_rooms", to: "rooms#my_rooms"
+
+  # resource :user, only: [ :edit, :update ]
+  # resources :rooms
+  resources :reservations, only: [ :index, :new, :create ]
+
+  resources :reservations do
+    collection do
+      post :confirm
+    end
+  end
+
+  resources :rooms do
+    collection do
+      get :search
+    end
+  end
+
+  get    "/login",  to: "sessions#new"
+  post   "/login",  to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 end

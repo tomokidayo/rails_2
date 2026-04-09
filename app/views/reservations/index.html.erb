@@ -1,0 +1,33 @@
+<div class="reservations-container">
+  <h2 class="page-title">予約一覧</h2>
+  <div class="reservations-list">
+    <% @reservations.each do |r| %>
+      <% days = (r.check_out_date - r.check_in_date).to_i %>
+      <% total = days * r.room.price * r.people_count %>
+      <div class="reservation-card">
+        <div class="reservation-image">
+          <% if r.room.image.attached? %>
+            <%= image_tag r.room.image, class: "room-image" %>
+          <% else %>
+            <%= image_tag "default.png", class: "room-image" %>
+          <% end %>
+        </div>
+        <div class="reservation-info">
+          <h3 class="room-name"><%= r.room.name %></h3>
+          <p class="room-description">
+            <%= truncate(r.room.description, length: 80) %>
+          </p>
+          <p><strong>チェックイン:</strong> <%= r.check_in_date.strftime("%Y/%m/%d") %></p>
+          <p><strong>チェックアウト:</strong> <%= r.check_out_date.strftime("%Y/%m/%d") %></p>
+          <p><strong>人数:</strong> <%= r.people_count %>人</p>
+          <p class="total-price">
+            合計料金: <%= total %>円
+          </p>
+          <p class="reserved-at">
+            予約日: <%= r.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
