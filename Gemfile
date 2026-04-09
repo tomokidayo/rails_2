@@ -57,4 +57,26 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'bcrypt'
+gem "bcrypt"
+
+# group :development, :test do
+#   gem "rspec-rails"
+# end
+
+# group :development, :test do
+#   gem "factory_bot_rails"
+#   gem "faker"
+# end
+
+group :development, :test do
+  # ...
+  # 追加
+  gem "rspec-rails"
+  # テストデータ作成に使用するGemです。次ページ以降で説明します。
+  gem "factory_bot_rails"
+  gem "faker"
+end
+
+group :development, :test do
+  gem "factory_bot_rails"
+end
